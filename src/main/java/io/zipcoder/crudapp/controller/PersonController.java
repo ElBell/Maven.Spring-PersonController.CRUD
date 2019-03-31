@@ -38,7 +38,7 @@ public class PersonController {
     public ResponseEntity<Person> updatePerson(@PathVariable int id, @RequestBody Person person) {
         person.setId(id);
         if (personRepository.findOne(id) != null) {
-            personRepository.delete(person.getId());
+            personRepository.delete(id);
             return new ResponseEntity<>(personRepository.save(person), HttpStatus.OK);
         }
         return new ResponseEntity<>(personRepository.save(person), HttpStatus.CREATED);
